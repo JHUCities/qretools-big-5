@@ -1,0 +1,7 @@
+name: talks_little
+title: Doesn't talk a lot
+text: Don't talk a lot.
+intent: Marks extraversion, as one of the set's ten extraversion items. The score comes from all ten together, never from this answer alone.
+concept: extraversion
+responses: agreement5
+source: IPIP 50-item Big-Five Factor Markers (Goldberg 1992), item 6 of 50, extraversion item 2. https://ipip.ori.org/New_IPIP-50-item-scale.htm

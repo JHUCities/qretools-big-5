@@ -1,0 +1,7 @@
+name: chores_done_right_away
+title: Gets chores done right away
+text: Get chores done right away.
+intent: Marks conscientiousness, as one of the set's ten conscientiousness items. The score comes from all ten together, never from this answer alone.
+concept: conscientiousness
+responses: agreement5
+source: IPIP 50-item Big-Five Factor Markers (Goldberg 1992), item 23 of 50, conscientiousness item 5. https://ipip.ori.org/New_IPIP-50-item-scale.htm

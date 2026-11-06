@@ -1,0 +1,7 @@
+name: shirks_duties
+title: Shirks duties
+text: Shirk my duties.
+intent: Marks conscientiousness, as one of the set's ten conscientiousness items. The score comes from all ten together, never from this answer alone.
+concept: conscientiousness
+responses: agreement5
+source: IPIP 50-item Big-Five Factor Markers (Goldberg 1992), item 38 of 50, conscientiousness item 8. https://ipip.ori.org/New_IPIP-50-item-scale.htm

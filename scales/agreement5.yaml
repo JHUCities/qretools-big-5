@@ -1,0 +1,8 @@
+# The response options every item uses. See README.md: these are the options the
+# public response set was collected with, not IPIP's own.
+labels:
+  "1": Disagree
+  "2": Slightly disagree
+  "3": Neutral
+  "4": Slightly agree
+  "5": Agree

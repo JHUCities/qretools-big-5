@@ -1,0 +1,7 @@
+name: changes_mood_a_lot
+title: Changes mood a lot
+text: Change my mood a lot.
+intent: Marks emotional stability, as one of the set's ten emotional stability items. The score comes from all ten together, never from this answer alone.
+concept: emotional_stability
+responses: agreement5
+source: IPIP 50-item Big-Five Factor Markers (Goldberg 1992), item 34 of 50, emotional stability item 7. https://ipip.ori.org/New_IPIP-50-item-scale.htm

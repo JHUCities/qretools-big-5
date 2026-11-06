@@ -1,0 +1,9 @@
+# The codes that stand for an answer that isn't an answer. Every question in
+# this workspace shares them.
+#
+# They are words, not numbers, on purpose: the instrument reads each answer as a
+# number to add it into a score, and a code that isn't a number reads as empty.
+# So a refusal leaves the score empty instead of adding 99 to it.
+labels:
+  REF: Refused
+  DK: Don't know

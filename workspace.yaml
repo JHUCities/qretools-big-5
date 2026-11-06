@@ -1,0 +1,17 @@
+# This workspace's details, read with every question, shared file and
+# instrument in it.
+
+# The DDI agency everything in this workspace is published under: the
+# registered code of the organization that maintains it. Every URN it exports
+# begins with it, as in urn:ddi:us.jhu:...
+# JHU (us.jhu, registered with the DDI Alliance 2026-10-19) maintains this
+# workspace. The items themselves are in the public domain: see README.md.
+agency: us.jhu
+
+# Every question here is one of the set's 50 markers, so each must say what it
+# measures, what it is called and which item it is. How an item is keyed, and
+# who is asked, are the instrument's: it says both once.
+required:
+  - title
+  - concept
+  - source

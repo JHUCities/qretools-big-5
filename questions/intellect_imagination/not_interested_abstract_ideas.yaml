@@ -1,0 +1,7 @@
+name: not_interested_abstract_ideas
+title: Not interested in abstract ideas
+text: Am not interested in abstract ideas.
+intent: Marks intellect and imagination, as one of the set's ten intellect and imagination items. The score comes from all ten together, never from this answer alone.
+concept: intellect_imagination
+responses: agreement5
+source: IPIP 50-item Big-Five Factor Markers (Goldberg 1992), item 20 of 50, intellect and imagination item 4. https://ipip.ori.org/New_IPIP-50-item-scale.htm

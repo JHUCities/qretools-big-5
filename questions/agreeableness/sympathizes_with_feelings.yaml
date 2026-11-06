@@ -1,0 +1,7 @@
+name: sympathizes_with_feelings
+title: Sympathizes with others' feelings
+text: Sympathize with others' feelings.
+intent: Marks agreeableness, as one of the set's ten agreeableness items. The score comes from all ten together, never from this answer alone.
+concept: agreeableness
+responses: agreement5
+source: IPIP 50-item Big-Five Factor Markers (Goldberg 1992), item 17 of 50, agreeableness item 4. https://ipip.ori.org/New_IPIP-50-item-scale.htm

@@ -1,0 +1,7 @@
+name: worries_about_things
+title: Worries about things
+text: Worry about things.
+intent: Marks emotional stability, as one of the set's ten emotional stability items. The score comes from all ten together, never from this answer alone.
+concept: emotional_stability
+responses: agreement5
+source: IPIP 50-item Big-Five Factor Markers (Goldberg 1992), item 14 of 50, emotional stability item 3. https://ipip.ori.org/New_IPIP-50-item-scale.htm

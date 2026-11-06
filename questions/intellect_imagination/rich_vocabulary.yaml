@@ -1,0 +1,7 @@
+name: rich_vocabulary
+title: Rich vocabulary
+text: Have a rich vocabulary.
+intent: Marks intellect and imagination, as one of the set's ten intellect and imagination items. The score comes from all ten together, never from this answer alone.
+concept: intellect_imagination
+responses: agreement5
+source: IPIP 50-item Big-Five Factor Markers (Goldberg 1992), item 5 of 50, intellect and imagination item 1. https://ipip.ori.org/New_IPIP-50-item-scale.htm

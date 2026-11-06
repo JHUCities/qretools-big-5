@@ -1,0 +1,7 @@
+name: often_feels_blue
+title: Often feels blue
+text: Often feel blue.
+intent: Marks emotional stability, as one of the set's ten emotional stability items. The score comes from all ten together, never from this answer alone.
+concept: emotional_stability
+responses: agreement5
+source: IPIP 50-item Big-Five Factor Markers (Goldberg 1992), item 49 of 50, emotional stability item 10. https://ipip.ori.org/New_IPIP-50-item-scale.htm

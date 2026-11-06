@@ -1,0 +1,7 @@
+name: likes_order
+title: Likes order
+text: Like order.
+intent: Marks conscientiousness, as one of the set's ten conscientiousness items. The score comes from all ten together, never from this answer alone.
+concept: conscientiousness
+responses: agreement5
+source: IPIP 50-item Big-Five Factor Markers (Goldberg 1992), item 33 of 50, conscientiousness item 7. https://ipip.ori.org/New_IPIP-50-item-scale.htm
