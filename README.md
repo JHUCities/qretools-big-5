@@ -66,6 +66,21 @@ The missing-value codes are words (`REF`, `DK`) rather than numbers so that this
 construction: a score reads each answer as a number, and a code that is not a number
 reads as empty. A numeric refusal code such as `99` would be added to the score instead.
 
+## There is no check workflow yet
+
+The instrument uses `cast`, which reads a coded answer as a number. No published release of
+the `qretools` command understands it yet, so `qretools check .` reports every score as an
+error. A workflow that can only fail says nothing, so this repository has none. Add
+`.github/workflows/check.yml` and the problem matcher back when a release understands
+`cast`; both are in `qretools-gss` to copy.
+
+Until then, check it with a build of the monorepo:
+
+```sh
+pnpm qretools check ../qretools-big-5
+pnpm qretools instrument check ../qretools-big-5/instruments/big5.yaml
+```
+
 ## It is generated
 
 `scales/`, `universes/`, `concepts/`, `questions/` and `instruments/` are written by
