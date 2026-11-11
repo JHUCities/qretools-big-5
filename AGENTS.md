@@ -6,15 +6,24 @@ IPIP's, and what the scores do. Read both before changing anything.
 
 ## The one rule: it's generated
 
-`scales/`, `universes/`, `concepts/`, `questions/` and `instruments/` are written by
-`tools/generate.py`. Don't edit those files by hand: change the tables at the top of the
-generator and run it again (`python -I tools/generate.py`), so that the keying, the
-notes, the concepts and the five scoring expressions can never say two different things.
+`scales/`, `universes/`, `concepts/`, `questions/` and `instruments/` (once `RELEASE` is
+set) are written by `tools/generate.py`. Don't edit those files by hand: change the
+tables at the top of the generator and run it again (`python -I tools/generate.py`), so
+that the keying, the notes, the concepts and the five scoring expressions can never say
+two different things.
 `workspace.yaml`, `missing.yaml`, `README.md` and this file are written by hand.
 
 The generator ends in assertions: 50 items, ten per factor, 24 reversed, unique names,
 and every item asked exactly once and scored exactly once. If one fails, the tables are
 wrong, not the assertion.
+
+## Releases
+
+The instrument on `main` reads this workspace at a release tag, never `../`: the
+generator writes `bank: JHUCities/qretools-big-5@<RELEASE>`. Releases are made by the
+Release workflow, never by hand, and a question change takes two of them (README,
+"Releases"). The pull request check runs `qretools build`, but GitHub can't make it
+required here: never merge while it fails.
 
 ## Things that look like tidying but aren't
 

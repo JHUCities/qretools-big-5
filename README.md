@@ -7,6 +7,7 @@ one instrument that asks all 50 and computes the five factor scores.
 - One shared scale, `agreement5`, which every item uses.
 - Five shared concepts, one per factor, which the questions and their variables refer to.
 - `instruments/big5.yaml`: the items in IPIP's published order, then the five scores.
+  It isn't on `main` until the questions are released as `v1` (see "Releases").
 
 ## Where the items come from
 
@@ -78,10 +79,36 @@ python -I tools/generate.py && git diff --exit-code   # has anything drifted?
 
 `workspace.yaml`, `missing.yaml`, this file and `AGENTS.md` are written by hand.
 
+## Releases
+
+A draft instrument on a branch may read this workspace as `../`, the questions as they are
+on that branch. On `main`, which is what a release includes, it reads them at a release
+tag: `bank: JHUCities/qretools-big-5@v1`. The generator writes that line from `RELEASE`,
+at the top of `tools/generate.py`, and writes no instrument while `RELEASE` is `None`.
+
+So questions are released before the instrument uses them. To change them:
+
+1. Change the tables, run the generator, and merge. If an item is added or renamed, set
+   `RELEASE` to `None` first: the released questions don't have it yet, so the
+   generator takes the instrument off `main` until step 3. Removing an item needs no
+   such step, as the released questions still have it.
+2. Release the questions: on GitHub, Actions, then Release, then "Run workflow", with the
+   next tag (`v2`, `v3`).
+3. Set `RELEASE` to that tag and run the generator. Then run `git fetch --tags` and
+   `qretools instrument export instruments/big5.yaml -o dist/big5.json`, which records the
+   tag's commit under `locked:` in `workspace.yaml`. Merge.
+4. Release again. This release includes the instrument.
+
+Never make, move or delete a tag by hand. The check on every pull request also builds the
+workspace as a release would, and fails if the instrument isn't ready to release. GitHub
+can't make that check required for a private repository on this plan, so never merge a
+pull request whose check fails.
+
 ## Open it
 
 - **In the app:** sign in at <https://qretools.com> and enter this repository.
-- **From a terminal:** `mise install` gives the pinned tools, then:
+- **From a terminal:** `mise install` gives the pinned tools, then (the instrument's
+  commands, here and under "Qualtrics", once it's on `main`: see "Releases"):
 
   ```sh
   qretools check .                                  # findings, one per line
