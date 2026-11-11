@@ -7,7 +7,6 @@ one instrument that asks all 50 and computes the five factor scores.
 - One shared scale, `agreement5`, which every item uses.
 - Five shared concepts, one per factor, which the questions and their variables refer to.
 - `instruments/big5.yaml`: the items in IPIP's published order, then the five scores.
-  It isn't on `main` until the questions are released as `v1` (see "Releases").
 
 ## Where the items come from
 
@@ -107,8 +106,7 @@ pull request whose check fails.
 ## Open it
 
 - **In the app:** sign in at <https://qretools.com> and enter this repository.
-- **From a terminal:** `mise install` gives the pinned tools, then (the instrument's
-  commands, here and under "Qualtrics", once it's on `main`: see "Releases"):
+- **From a terminal:** `mise install` gives the pinned tools, then:
 
   ```sh
   qretools check .                                  # findings, one per line

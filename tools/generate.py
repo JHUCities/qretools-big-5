@@ -24,9 +24,10 @@ import sys
 OUT = sys.argv[1] if len(sys.argv) > 1 else os.path.join(os.path.dirname(os.path.abspath(__file__)), "..")
 
 # This workspace's repository, and the release whose questions the instrument reads (an
-# instrument on main reads them at a tag). None until v1 exists: no instrument is written.
+# instrument on main reads them at a tag). None while the instrument waits for a release
+# (README, "Releases", step 1): no instrument is written.
 REPOSITORY = "JHUCities/qretools-big-5"
-RELEASE = None
+RELEASE = "v1"
 
 # The response options, as the Open-Source Psychometrics Project fields these items
 # (openpsychometrics.org), whose public response set is the human half this workspace is
