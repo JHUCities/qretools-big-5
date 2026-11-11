@@ -1,0 +1,234 @@
+# The 50 markers of the IPIP Big-Five Factor Markers, asked in the order IPIP
+# publishes them, then the five scores.
+#
+# The order interleaves the five factors on purpose, and it is the order the
+# public response set this workspace compares with was fielded in. Don't shuffle
+# the items or put them in sections by factor: either would make the answers
+# incomparable with it.
+#
+# Each score adds its ten items, reversing the ones keyed the other way
+# (6 - the answer), so every score runs from 10 to 50. An item left unanswered
+# leaves its score empty: nothing is imputed here.
+name: big5
+title: Big Five personality markers
+description: The 50 public-domain markers of the five factors, with each factor's score computed from its ten items.
+universe: bank.all_respondents
+uses:
+  bank: JHUCities/qretools-big-5@v1
+flow:
+  - say: The next pages describe people's behavior. For each phrase, say how much you agree or disagree that it describes you. Describe yourself as you generally are now, not as you wish to be in the future.
+  - ask: bank.life_of_party
+  - ask: bank.little_concern_for_others
+  - ask: bank.always_prepared
+  - ask: bank.stressed_easily
+  - ask: bank.rich_vocabulary
+  - ask: bank.talks_little
+  - ask: bank.interested_in_people
+  - ask: bank.leaves_belongings_around
+  - ask: bank.relaxed_most_of_the_time
+  - ask: bank.abstract_ideas_hard
+  - ask: bank.comfortable_around_people
+  - ask: bank.insults_people
+  - ask: bank.attention_to_details
+  - ask: bank.worries_about_things
+  - ask: bank.vivid_imagination
+  - ask: bank.keeps_in_the_background
+  - ask: bank.sympathizes_with_feelings
+  - ask: bank.makes_a_mess_of_things
+  - ask: bank.seldom_feels_blue
+  - ask: bank.not_interested_abstract_ideas
+  - ask: bank.starts_conversations
+  - ask: bank.not_interested_others_problems
+  - ask: bank.chores_done_right_away
+  - ask: bank.easily_disturbed
+  - ask: bank.excellent_ideas
+  - ask: bank.little_to_say
+  - ask: bank.soft_heart
+  - ask: bank.forgets_to_put_things_back
+  - ask: bank.upset_easily
+  - ask: bank.no_good_imagination
+  - ask: bank.talks_to_many_at_parties
+  - ask: bank.not_really_interested_others
+  - ask: bank.likes_order
+  - ask: bank.changes_mood_a_lot
+  - ask: bank.quick_to_understand
+  - ask: bank.avoids_attention
+  - ask: bank.takes_time_for_others
+  - ask: bank.shirks_duties
+  - ask: bank.frequent_mood_swings
+  - ask: bank.uses_difficult_words
+  - ask: bank.fine_being_center_of_attention
+  - ask: bank.feels_others_emotions
+  - ask: bank.follows_a_schedule
+  - ask: bank.irritated_easily
+  - ask: bank.reflects_on_things
+  - ask: bank.quiet_around_strangers
+  - ask: bank.puts_people_at_ease
+  - ask: bank.exacting_in_my_work
+  - ask: bank.often_feels_blue
+  - ask: bank.full_of_ideas
+  # Extraversion: each item's points, 5 of the 10 reversed, then the score.
+  - compute: points_life_of_party
+    value: cast(bank.life_of_party, integer)
+  - compute: points_talks_little
+    value: 6 - cast(bank.talks_little, integer)
+  - compute: points_comfortable_around_people
+    value: cast(bank.comfortable_around_people, integer)
+  - compute: points_keeps_in_the_background
+    value: 6 - cast(bank.keeps_in_the_background, integer)
+  - compute: points_starts_conversations
+    value: cast(bank.starts_conversations, integer)
+  - compute: points_little_to_say
+    value: 6 - cast(bank.little_to_say, integer)
+  - compute: points_talks_to_many_at_parties
+    value: cast(bank.talks_to_many_at_parties, integer)
+  - compute: points_avoids_attention
+    value: 6 - cast(bank.avoids_attention, integer)
+  - compute: points_fine_being_center_of_attention
+    value: cast(bank.fine_being_center_of_attention, integer)
+  - compute: points_quiet_around_strangers
+    value: 6 - cast(bank.quiet_around_strangers, integer)
+  - compute: extraversion
+    value: >-
+      points_life_of_party
+      + points_talks_little
+      + points_comfortable_around_people
+      + points_keeps_in_the_background
+      + points_starts_conversations
+      + points_little_to_say
+      + points_talks_to_many_at_parties
+      + points_avoids_attention
+      + points_fine_being_center_of_attention
+      + points_quiet_around_strangers
+  # Agreeableness: each item's points, 4 of the 10 reversed, then the score.
+  - compute: points_little_concern_for_others
+    value: 6 - cast(bank.little_concern_for_others, integer)
+  - compute: points_interested_in_people
+    value: cast(bank.interested_in_people, integer)
+  - compute: points_insults_people
+    value: 6 - cast(bank.insults_people, integer)
+  - compute: points_sympathizes_with_feelings
+    value: cast(bank.sympathizes_with_feelings, integer)
+  - compute: points_not_interested_others_problems
+    value: 6 - cast(bank.not_interested_others_problems, integer)
+  - compute: points_soft_heart
+    value: cast(bank.soft_heart, integer)
+  - compute: points_not_really_interested_others
+    value: 6 - cast(bank.not_really_interested_others, integer)
+  - compute: points_takes_time_for_others
+    value: cast(bank.takes_time_for_others, integer)
+  - compute: points_feels_others_emotions
+    value: cast(bank.feels_others_emotions, integer)
+  - compute: points_puts_people_at_ease
+    value: cast(bank.puts_people_at_ease, integer)
+  - compute: agreeableness
+    value: >-
+      points_little_concern_for_others
+      + points_interested_in_people
+      + points_insults_people
+      + points_sympathizes_with_feelings
+      + points_not_interested_others_problems
+      + points_soft_heart
+      + points_not_really_interested_others
+      + points_takes_time_for_others
+      + points_feels_others_emotions
+      + points_puts_people_at_ease
+  # Conscientiousness: each item's points, 4 of the 10 reversed, then the score.
+  - compute: points_always_prepared
+    value: cast(bank.always_prepared, integer)
+  - compute: points_leaves_belongings_around
+    value: 6 - cast(bank.leaves_belongings_around, integer)
+  - compute: points_attention_to_details
+    value: cast(bank.attention_to_details, integer)
+  - compute: points_makes_a_mess_of_things
+    value: 6 - cast(bank.makes_a_mess_of_things, integer)
+  - compute: points_chores_done_right_away
+    value: cast(bank.chores_done_right_away, integer)
+  - compute: points_forgets_to_put_things_back
+    value: 6 - cast(bank.forgets_to_put_things_back, integer)
+  - compute: points_likes_order
+    value: cast(bank.likes_order, integer)
+  - compute: points_shirks_duties
+    value: 6 - cast(bank.shirks_duties, integer)
+  - compute: points_follows_a_schedule
+    value: cast(bank.follows_a_schedule, integer)
+  - compute: points_exacting_in_my_work
+    value: cast(bank.exacting_in_my_work, integer)
+  - compute: conscientiousness
+    value: >-
+      points_always_prepared
+      + points_leaves_belongings_around
+      + points_attention_to_details
+      + points_makes_a_mess_of_things
+      + points_chores_done_right_away
+      + points_forgets_to_put_things_back
+      + points_likes_order
+      + points_shirks_duties
+      + points_follows_a_schedule
+      + points_exacting_in_my_work
+  # Emotional stability: each item's points, 8 of the 10 reversed, then the score.
+  - compute: points_stressed_easily
+    value: 6 - cast(bank.stressed_easily, integer)
+  - compute: points_relaxed_most_of_the_time
+    value: cast(bank.relaxed_most_of_the_time, integer)
+  - compute: points_worries_about_things
+    value: 6 - cast(bank.worries_about_things, integer)
+  - compute: points_seldom_feels_blue
+    value: cast(bank.seldom_feels_blue, integer)
+  - compute: points_easily_disturbed
+    value: 6 - cast(bank.easily_disturbed, integer)
+  - compute: points_upset_easily
+    value: 6 - cast(bank.upset_easily, integer)
+  - compute: points_changes_mood_a_lot
+    value: 6 - cast(bank.changes_mood_a_lot, integer)
+  - compute: points_frequent_mood_swings
+    value: 6 - cast(bank.frequent_mood_swings, integer)
+  - compute: points_irritated_easily
+    value: 6 - cast(bank.irritated_easily, integer)
+  - compute: points_often_feels_blue
+    value: 6 - cast(bank.often_feels_blue, integer)
+  - compute: emotional_stability
+    value: >-
+      points_stressed_easily
+      + points_relaxed_most_of_the_time
+      + points_worries_about_things
+      + points_seldom_feels_blue
+      + points_easily_disturbed
+      + points_upset_easily
+      + points_changes_mood_a_lot
+      + points_frequent_mood_swings
+      + points_irritated_easily
+      + points_often_feels_blue
+  # Intellect and imagination: each item's points, 3 of the 10 reversed, then the score.
+  - compute: points_rich_vocabulary
+    value: cast(bank.rich_vocabulary, integer)
+  - compute: points_abstract_ideas_hard
+    value: 6 - cast(bank.abstract_ideas_hard, integer)
+  - compute: points_vivid_imagination
+    value: cast(bank.vivid_imagination, integer)
+  - compute: points_not_interested_abstract_ideas
+    value: 6 - cast(bank.not_interested_abstract_ideas, integer)
+  - compute: points_excellent_ideas
+    value: cast(bank.excellent_ideas, integer)
+  - compute: points_no_good_imagination
+    value: 6 - cast(bank.no_good_imagination, integer)
+  - compute: points_quick_to_understand
+    value: cast(bank.quick_to_understand, integer)
+  - compute: points_uses_difficult_words
+    value: cast(bank.uses_difficult_words, integer)
+  - compute: points_reflects_on_things
+    value: cast(bank.reflects_on_things, integer)
+  - compute: points_full_of_ideas
+    value: cast(bank.full_of_ideas, integer)
+  - compute: intellect_imagination
+    value: >-
+      points_rich_vocabulary
+      + points_abstract_ideas_hard
+      + points_vivid_imagination
+      + points_not_interested_abstract_ideas
+      + points_excellent_ideas
+      + points_no_good_imagination
+      + points_quick_to_understand
+      + points_uses_difficult_words
+      + points_reflects_on_things
+      + points_full_of_ideas

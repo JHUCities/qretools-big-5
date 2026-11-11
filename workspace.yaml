@@ -15,3 +15,8 @@ required:
   - title
   - concept
   - source
+
+# Locks: the commit each release tag the instrument reads pointed to, so a moved tag
+# shows. `qretools instrument export` writes these lines; don't edit them.
+locked:
+  jhucities/qretools-big-5@v1: b2aa57319fad165db8d8d5d7f0749f1913a26c8e
