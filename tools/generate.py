@@ -3,8 +3,9 @@
 Usage: python -I tools/generate.py [dir]
 <dir> is the workspace to write (default: the directory holding this script's parent).
 
-scales/, universes/, concepts/, questions/ and instruments/ are written from the tables
-below; workspace.yaml, missing.yaml, README.md and AGENTS.md are written by hand. Edit a
+scales/, universes/, concepts/ and questions/ are written from the tables below, and
+instruments/ too once RELEASE names a release (until then it's removed);
+workspace.yaml, missing.yaml, README.md and AGENTS.md are written by hand. Edit a
 table and run this again: it writes the same bytes every time, so
 
     python -I tools/generate.py && git diff --exit-code
@@ -21,6 +22,11 @@ import os
 import sys
 
 OUT = sys.argv[1] if len(sys.argv) > 1 else os.path.join(os.path.dirname(os.path.abspath(__file__)), "..")
+
+# This workspace's repository, and the release whose questions the instrument reads (an
+# instrument on main reads them at a tag). None until v1 exists: no instrument is written.
+REPOSITORY = "JHUCities/qretools-big-5"
+RELEASE = None
 
 # The response options, as the Open-Source Psychometrics Project fields these items
 # (openpsychometrics.org), whose public response set is the human half this workspace is
@@ -159,7 +165,7 @@ def points(keying, name):
     return read if keying == "+" else "%d - %s" % (REVERSE, read)
 
 
-def instrument():
+def instrument(release):
     lines = [
         "# The 50 markers of the IPIP Big-Five Factor Markers, asked in the order IPIP",
         "# publishes them, then the five scores.",
@@ -182,7 +188,7 @@ def instrument():
         ),
         "universe: bank." + UNIVERSE[0],
         "uses:",
-        "  bank: ../",
+        "  bank: %s@%s" % (REPOSITORY, release),
         "flow:",
         "  - say: " + yaml(PREAMBLE),
     ]
@@ -223,7 +229,10 @@ def main():
             "questions/%s/%s.yaml" % (FACTORS[letter][0], name),
             question(n, letter, keying, name, title, text),
         )
-    write("instruments/big5.yaml", instrument())
+    if RELEASE is not None:
+        write("instruments/big5.yaml", instrument(RELEASE))
+    elif os.path.exists(os.path.join(OUT, "instruments", "big5.yaml")):
+        os.remove(os.path.join(OUT, "instruments", "big5.yaml"))
 
     # What the tables must hold for the scores to mean anything.
     names = [i[3] for i in ITEMS]
@@ -236,8 +245,8 @@ def main():
         assert sum(1 for i in ITEMS if i[1] == letter) == 10, letter
     assert sum(1 for i in ITEMS if i[2] == "-") == 24
     assert all(i[2] in "+-" for i in ITEMS)
-    # Every item is asked once, and scored once.
-    flow = instrument()
+    # Every item is asked once, and scored once (checked whether or not it's written).
+    flow = instrument(RELEASE or "v0")
     for name in names:
         assert flow.count("  - ask: bank." + name) == 1, name
         assert sum(line.count("bank.%s," % name) for line in flow) == 1, name
@@ -245,8 +254,9 @@ def main():
         # Read once, by exactly one score, as a whole line of its sum.
         read = [l for l in flow if l.strip().lstrip("+ ") == POINTS % name]
         assert len(read) == 1, name
-    print("wrote %d questions, %d concepts, 1 scale, 1 universe and 1 instrument into %s"
-          % (len(ITEMS), len(FACTORS), os.path.normpath(OUT)))
+    print("wrote %d questions, %d concepts, 1 scale, 1 universe and %s into %s"
+          % (len(ITEMS), len(FACTORS), "no instrument (RELEASE is None)" if RELEASE is None
+             else "1 instrument, reading " + RELEASE, os.path.normpath(OUT)))
 
 
 main()
