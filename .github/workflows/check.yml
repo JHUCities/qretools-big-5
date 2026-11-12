@@ -2,9 +2,8 @@
 # type. It fails if anything is left to fill in or fix, and marks each error and warning
 # on its line (.github/qretools-matcher.json). Notes are only advice, so they aren't
 # marked. Then it builds the workspace as a release would. The build refuses an
-# instrument that isn't ready to release (see "Releases" in README.md). GitHub can't
-# make this check required here, so never merge while it fails. qretools is the version
-# pinned in mise.toml.
+# instrument that isn't ready to release (see "Releases" in README.md), so one can't
+# reach main. Nothing it builds is kept. qretools is the version pinned in mise.toml.
 name: Check
 
 on:

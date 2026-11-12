@@ -99,9 +99,8 @@ So questions are released before the instrument uses them. To change them:
 4. Release again. This release includes the instrument.
 
 Never make, move or delete a tag by hand. The check on every pull request also builds the
-workspace as a release would, and fails if the instrument isn't ready to release. GitHub
-can't make that check required for a private repository on this plan, so never merge a
-pull request whose check fails.
+workspace as a release would, and fails if the instrument isn't ready to release. A
+ruleset on `main` requires it to pass before a pull request can be merged.
 
 ## Open it
 
