@@ -22,8 +22,7 @@ wrong, not the assertion.
 The instrument on `main` reads this workspace at a release tag, never `../`: the
 generator writes `bank: JHUCities/qretools-big-5@<RELEASE>`. Releases are made by the
 Release workflow, never by hand, and a question change takes two of them (README,
-"Releases"). The pull request check runs `qretools build`, but GitHub can't make it
-required here: never merge while it fails.
+"Releases"). The pull request check runs `qretools build`, and `main` requires it.
 
 ## Things that look like tidying but aren't
 
