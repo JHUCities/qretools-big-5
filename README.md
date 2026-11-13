@@ -98,11 +98,21 @@ So questions are released before the instrument uses them. To change them:
    tag's commit under `locked:` in `workspace.yaml`. Merge.
 4. Release again. This release includes the instrument.
 
-Each push to `main`, and each release, publishes the DDI on GitHub Pages: `main` at
-<https://jhucities.github.io/qretools-big-5/ddi.json>, and each release in a folder named
-for its tag, where it stays: for example
-<https://jhucities.github.io/qretools-big-5/v2/instruments/big5.json>. Each release is
-built with the qretools that it pins (`.github/workflows/ddi.yml`).
+Each push to `main` publishes the DDI on GitHub Pages. The index page,
+<https://jhucities.github.io/qretools-big-5/>, links each file of `main` and each release.
+`main` is at the root: <https://jhucities.github.io/qretools-big-5/ddi.json>. Each release
+is in a folder with the name of its tag, and its files stay at the same address. For
+example, the folder of `v2` holds these files:
+
+- <https://jhucities.github.io/qretools-big-5/v2/ddi.json>, the DDI of the workspace.
+- <https://jhucities.github.io/qretools-big-5/v2/instruments/big5.json>, the DDI of the
+  instrument.
+
+To cite the DDI of a release in a dataset, give its address to
+`qretools responses --ddi` (QREtools 2.0.0-alpha.13 or later). The dataset records the
+address and the SHA-256 digest of the file.
+
+Each release is built with the qretools that it pins (`.github/workflows/ddi.yml`).
 
 Never make, move or delete a tag by hand. The check on every pull request also builds the
 workspace as a release would, and fails if the instrument isn't ready to release. A
