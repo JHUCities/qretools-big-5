@@ -143,3 +143,10 @@ answers.
 One note is expected and is not a problem: a respondent doesn't see the missing-value
 codes as options. Refusing in Qualtrics is leaving the question blank, and a blank item
 leaves its own points and its factor's score empty, which is what the codes mean here.
+
+## Licence
+
+The code and the text of this workspace are under the MIT License. See [LICENSE](LICENSE).
+
+The 50 items are IPIP's, and IPIP puts them in the public domain. The MIT License does not
+apply to them.
